@@ -83,13 +83,10 @@ stages:
             inputs:
               connectionType: 'Kubernetes Service Connection'
               kubernetesServiceEndpoint: 'myapp-default'
-              command: 'get'
+              command: 
+              arguments: 'secret mycontainerregistryrakesh13b1-auth -o jsonpath=''{.data.\.dockerconfigjson}'
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'
-              azureSubscriptionEndpointForSecrets: 'ACES CORE-BAMI-WT-V-RAKEMISHRA(89c51ad9-e9c2-48e8-842a-37edf03e2010)'
-              azureContainerRegistry: 'mycontainerregistryrakesh.azurecr.io'
-              secretName: 'mycontainerregistryrakesh13b1-auth'
-              forceUpdate: false
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
