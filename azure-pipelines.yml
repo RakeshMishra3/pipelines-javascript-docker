@@ -107,6 +107,10 @@ stages:
               secretName: $(imagePullSecret)
               namespace: $(k8sNamespaceForPR)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          - task: Kubernetes@1
+            inputs:
+              command: 'get'
+              arguments: "secret mycontainerregistryrakesh13b1-auth -o json"
 
           - task: KubernetesManifest@0
             displayName: Deploy to the new namespace in the Kubernetes cluster
