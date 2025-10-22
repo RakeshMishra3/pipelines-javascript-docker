@@ -76,7 +76,7 @@ stages:
               targetType: 'inline'
               script: |
                 # Write your commands here
-                SECRET=$(kubectl get secret mycontainerregistryrakesh13b1-auth -o jsonpath='{.data.password}' | base64 --decode)
+                SECRET=$(kubectl get secret mycontainerregistryrakesh13b1-auth -o jsonpath='{.data.\.dockerconfigjson}')
                 echo "##vso[task.setvariable variable=MY_SECRET;issecret=true]$SECRET"
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
