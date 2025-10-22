@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: rakeshmishrapipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rakeshmishrapipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: rakeshmishrapipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: rakeshmishrapipelinesjavascriptdocker 
+          image: mycontainerregistryrakesh.azurecr.io/rakeshmishrapipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
